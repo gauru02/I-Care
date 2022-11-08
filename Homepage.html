@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Pharmacy</title>
+    
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet"
+		href=
+"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity=
+"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+		crossorigin="anonymous">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="medical logo.png" width="80px">
+                </div>
+                <nav>
+                    <ul id="menuitem">
+                        
+                        <li> <a href="http://localhost:3000">Doctor Consultation</a></li>
+                        <li> <a href="ToDo-App\index.html">Medical Report</a></li>
+                        <li> <a href="Health calculator.html">Health Tracking </a></li>
+                        <li><a href="emergency.html">Emergencies</a></li>
+                       
+        
+                    </ul>
+                </nav>
+                <img src="menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+    <div class="content">
+        <div class="card">
+            <img src="medicine1.jpg" alt="medicine1" style="width:80%">
+            <h1>OTC Drugs </h1>
+            <p class="price"></p>
+            <p>Over-the-counter drugs are medicines you can buy at pharmacies, convenience and grocery stores without a prescription from health care provider.These include aspirin and other pain relievers, antacids, laxatives, allergy medicines. </p>
+            <!-- <p><button>Add to Cart</button></p> -->
+          </div>
+          <div class="card">
+            <img src="medicine1.jpg" alt="medicine1" style="width:80%">
+            <h1>Prescription medicines</h1>
+            <p class="price"></p>
+            <p>These medicines require a prescription from a doctor or other health care professional licensed to prescribe medicines.</p>
+            <!-- <p><button>Add to Cart</button></p> -->
+          </div>
+          <div class="card">
+            <img src="medicine1.jpg" alt="medicine1" style="width:80%">
+            <h1>Complementary medicines</h1>
+            <p class="price"></p>
+            <p>Complementary medicines include vitamin, mineral, herbal, aromatherapy, and homoeopathic products.  </p>
+           <!-- <p><button>Add to Cart</button></p> -->
+          </div>
+          
+      <form class="container" id="contactForm">
+          <div class="card">
+              <div class="card-body">
+  
+                  <div class="form-group"
+                      style="margin-left: 15px;
+                              margin-top: 10px;
+                              display:none;">
+      <label for="exampleFormControlSelect1">Select Type</label>
+      <select class="form-control " id="types">
+      <option>prescriptions</option>
+      </select>
+  </div>
+  
+  <br>
+      Priscription Upload (Including Address):
+      <br>
+      <!-- click here to choose file -->
+      <input type="file" name="files[]" id="files">
+    
+
+      <!-- click here to upload file -->
+      <input type="hidden"
+          name="url"
+          id="url">
+          <button type="button" onclick="uploadimage()">
+              Upload Image
+              </button>
+          <br><br>
+  </div>
+  </div>
+  
+  <button type="submit"
+          class="btn btn-primary"
+          style="margin-left: 15px; margin-top: 10px; display:none; ">
+                  Submit
+  </button>
+  
+  </form>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js ">
+  </script>
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js ">
+  </script>
+  
+  <link type="text/css " rel="stylesheet " href=
+  "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css " />
+  
+  <script src=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js ">
+  </script>
+  
+  <script>
+  
+  
+  
+  // adding firebase data
+   const firebaseConfig = {
+      apiKey: "AIzaSyAos_Y5Djv6sS9zX3kaK8oeaMa87A-ecC4",
+      authDomain: "i-care-dc7c9.firebaseapp.com",
+      projectId: "i-care-dc7c9",
+      storageBucket: "i-care-dc7c9.appspot.com",
+      messagingSenderId: "581577289456",
+      appId: "1:581577289456:web:ceae29af39dc2acc1ddc35"
+    };
+  firebase.initializeApp(firebaseConfig);
+  
+  var messagesRef = firebase.database().ref('Checking');
+  document.getElementById(
+      'contactForm').addEventListener('submit', submitForm);
+  //uploading file in storage
+  function uploadimage(){
+    
+      var type = getInputVal('types');
+  var storage = firebase.storage();
+  var file=document.getElementById("files").files[0];
+  var storageref=storage.ref();
+  var thisref=storageref.child(type).child(file.name).put(file);
+  thisref.on('state_changed',function(snapshot) {
+  
+  
+  }, function(error) {
+  
+  }, function() {
+  // Uploaded completed successfully, now we can get the download URL
+  thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      //getting url of image
+      document.getElementById("url").value=downloadURL;
+      alert('uploaded successfully');
+      saveMessage(downloadURL);
+  });
+  });
+  
+  // Get values
+  var url = getInputVal('url');
+  // Save message
+  // saveMessage(url);
+  }
+  function getInputVal(id){
+      document.getElementById('contactForm').reset();
+  
+  }
+  
+  
+  // Function to get get form values
+  function getInputVal(id){
+  return document.getElementById(id).value;
+  }
+  
+  // Save message to firebase database
+  function saveMessage(url){
+  var newMessageRef = messagesRef.push();
+  newMessageRef.set({
+  imageurl:url,
+  });
+  }
+  </script>
+        
+        
+           
+        
+         
+
+
+    </div>
+            
+        </div>
+        </div>
+       
+</body>
+</html>

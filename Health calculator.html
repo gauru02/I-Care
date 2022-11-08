@@ -1,0 +1,458 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Health calculator </title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100i,300,300i,400,400i,700|Open+Sans:300,300i,400,400i,600,600i,700|Roboto:100,100i,300,300i,400,400i,500,500i" rel="stylesheet">
+    <meta property="og:title" content="Health calculator js" />
+    <meta property="og:description" content="Health calculator is a collection of BMR calculator,Body Shape Calculator,Body Fat percentage calculator and Ideal weight calculator." />
+    <meta property="og:image" content="https://www.adminspress.com/elem_thumb/elements_thumb28kGmgqa.png" />
+    <meta name="twitter:title" content="Health calculator js" />
+    <meta name="twitter:site" content="@Adminspress" />
+    <meta name="twitter:image" content="https://www.adminspress.com/elem_thumb/elements_thumb28kGmgqa.png" />
+    
+
+     <link href='https://bootswatch.com/4/cerulean/bootstrap.css' rel='stylesheet'>    
+  <style>
+   body{
+    /*background-color:orange;*/
+    background-color: #2fa4e7
+}
+
+ul.nav.nav-pills {
+    background: #2fa4e7;
+    border-radius: 4px;
+}
+ul.nav.nav-pills li a {
+    color: #fff;
+}
+ul.nav.nav-pills li a.active {
+    background: #008fe2;
+    color: #ffffff;
+}
+h6 {
+    color:#333;
+}
+@media(max-width:746px){
+    li.nav-item {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+h3, .h3 {
+    font-size: 1.3rem;
+}
+}   </style>
+</head>
+<body >
+    
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto mt-5">
+          <div class="card">
+            <div class="card-body">
+            <h4 class="text-center mt-2" style="color:#333">Health Calculator </h4>
+              <!-- Nav pills -->
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#home">Body Shape Calcultor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#bodyFat">Body Fat Calcultor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#iFat">Ideal Fat Calcultor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#bmr">BMR Calcultor</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>Body Shape Calcultor</h3>
+       <div class="row">
+           <div class="col-md-6 col-xs-12">
+                <form>
+            <div class="form-group">
+                <label>Bust Size</label>
+               <div class="input-group mb-3">
+                  <input type="text" class="form-control" id="bust" placeholder="Bust Size" aria-label="Bust Size" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Waist Size</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="waist" class="form-control" placeholder="Waist Size" aria-label="Waist Size" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>High Hip Size</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="highHip" class="form-control" placeholder="High Hip Size" aria-label="High Hip Size" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+              <div class="form-group">
+                <label>Hip Size</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="hip" class="form-control" placeholder="Hip Size" aria-label="Hip Size" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="calculateBodyShape">Calculate</button>
+            </div>
+        </form>
+           </div>
+           <div class="col-md-6 col-xs-12" id="bodyShapRes">
+               <p><b>Bust size</b> —the circumference measured around the chest over the fullest part of the breasts, while wearing a properly fitted bra.</p><p>
+
+                <b>Waist size</b> —the smallest circumference measured around the natural waist, just above the belly button.</p><p>
+                
+                <b>High hip size</b> —the circumference of the upper swell of the hip over the pelvic region. It is around 7 inches (1 cm) below the natural waist.</p><p>
+                
+                <b>Hip size</b> —the largest circumference measured around the hips over the largest part of the buttocks.</p>
+           </div>
+       </div>
+    </div>
+    <div id="bodyFat" class="container tab-pane fade"><br>
+       <h3>Body Fat Calcultor</h3>
+       <div class="row">
+           <div class="col-md-6 col-xs-12">
+                <form>
+            <div class="form-group">
+                <label>Gender</label>
+                <br>
+                <input type="radio" name="fgender" class="fgender" value="male" checked> Male
+                <br>
+                 <input type="radio" class="fgender" name="fgender" value="female"> Female<br>
+            </div>
+            <div class="form-group">
+                <label>Age</label>
+               <div class="input-group mb-3">
+                  <input type="text" class="form-control" id="fAge" placeholder="Age" aria-label="Age" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Years</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Weight</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="fWeight" class="form-control" placeholder="Weight" aria-label="Weight" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">KG</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Height</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="fHeight" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+              <div class="form-group">
+                <label>Neck</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="fNeck" class="form-control" placeholder="Neck" aria-label="Neck" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Waist</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="fWaist" class="form-control" placeholder="Waist" aria-label="Waist" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Hip</label>
+               <div class="input-group mb-3">
+                  <input type="text" id="fHip" class="form-control" placeholder="Hip" aria-label="Hip" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="calculateBodyFat">Calculate</button>
+            </div>
+        </form>
+           </div>
+           <div class="col-md-6 col-xs-12 table-responsive">
+               <div id="bodyFatRes">
+                   
+               </div>
+               <table class="table table-hover table-condensed">
+            	<tbody>
+            		<tr>
+            			<td>Description</td>
+            			<td>Women</td>
+            			<td>Men</td>
+            		</tr>
+            		<tr>
+            			<td>Recommended amount</td>
+            			<td>20-25%</td>
+            			<td>8-14%</td>
+            		</tr>
+            		<tr>
+            			<td>Adults in United States, average</td>
+            			<td>22-25%</td>
+            			<td>15-19%</td>
+            		</tr>
+            		<tr>
+            			<td>Obese</td>
+            			<td>30+%</td>
+            			<td>25+%</td>
+            		</tr>
+            	</tbody>
+            </table>
+           </div>
+       </div>
+    </div>
+    <div id="iFat" class="container tab-pane fade"><br>
+      <h3>Ideal Fat Calcultor</h3>
+      <div class="row">
+          <div class="col-md-4 col-xs-12">
+           <div class="form-group">
+            <label>Gender</label>
+            <br>
+            <input type="radio" name="igender" class="igender" value="male" checked> Male
+            <br>
+             <input type="radio" class="igender" name="igender" value="female"> Female<br>
+            </div>
+              <div class="form-group">
+                  <label>Height</label>
+                 <div class="input-group mb-3">
+                  <input type="text" id="iHeight" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                 <button class="btn btn-success btn-block" id="calculateIdealWeight">Calculate Ideal Weight</button>
+              </div>
+         </div>
+        <div class="col-md-4 col-xs-12 text-dark">
+              <h4>Result:</h4>
+              <h6>Robinson Formula: <span id="rRobinson"></span></h6>
+              <h6>Miller Formula: <span id="rMiller"></span></h6>
+              <h6>Hamwi Formula: <span id="rHamwi"></span></h6>
+              <h6>Devine Formula: <span id="rDevine"></span></h6>
+         </div>
+      </div>
+    </div>
+    <div id="bmr" class="container tab-pane fade"><br>
+      <h3>BMR Calcultor</h3>
+      <div class="row">
+          <div class="col-md-4 col-xs-12">
+           <div class="form-group">
+            <label>Gender</label>
+            <br>
+            <input type="radio" name="bmr_gender" class="bmr_gender" value="male" checked> Male
+            <br>
+             <input type="radio" class="bmr_gender" name="bmr_gender" value="female"> Female<br>
+            </div>
+              <div class="form-group">
+                  <label>Height</label>
+                 <div class="input-group mb-3">
+                  <input type="text" id="bmrHeight" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CM</span>
+                  </div>
+                </div>
+              </div>
+             <div class="form-group">
+                  <label>Weight</label>
+                 <div class="input-group mb-3">
+                  <input type="text" id="bmrWeight" class="form-control" placeholder="Weight" aria-label="Weight" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">KG</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label>Age</label>
+                 <div class="input-group mb-3">
+                  <input type="text" id="bmrAge" class="form-control" placeholder="Age" aria-label="Age" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Years</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                 <button class="btn btn-success btn-block" id="calculateBmr">Calculate BMR</button>
+              </div>
+         </div>
+        <div class="col-md-6 col-xs-12 mx-auto text-dark">
+              <h4>Result:</h4>
+              <div id="bmrRes">
+                  
+              </div>
+              <table class="table table-striped table-condensed">
+                  <thead>
+                      <tr>
+                          <th>Activity Level</th>
+                      <th>Calorie</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>sedentary (little or no exercise)</td>
+                          <td id="bmrSed">00.00</td>
+                      </tr>
+                      <tr>
+                          <td>Lightly active (light exercise or sports 1-3 days/week)</td>
+                          <td id="bmrLA">00.00</td>
+                      </tr>
+                      <tr>
+                          <td>Moderately active (moderate exercise 3-5 days/week)</td>
+                          <td id="bmrM">00.00</td>
+                      </tr>
+                      <tr>
+                          <td>Very active (hard exercise 6-7 days/week)</td>
+                          <td id="bmrVA">00.00</td>
+                      </tr>
+                      <tr>
+                          <td>Super active (very hard exercise and a physical job)</td>
+                          <td id="bmrSA">00.00</td>
+                      </tr>
+                  </tbody>
+              </table>
+         </div>
+      </div>
+    </div>
+  </div>
+          </div>
+        </div>
+    </div>
+    </div>
+</div>    
+
+
+ 
+   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script> <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js'></script> <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js'></script></body>
+<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script>
+// BMR Calcultaor
+$('#calculateBmr').click(function(e){
+    e.preventDefault();
+    let gender = $('input[name="bmr_gender"]:checked').val();
+    let age = $('#bmrAge').val();
+    let weight = $('#bmrWeight').val();
+    let height = $('#bmrHeight').val();
+    let bmr = '';
+    if(gender=='male'){
+        bmr =  (10 * weight) + (6.25 * height) - (5 * age) + 5;
+    }else{
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        
+    }
+
+    $('#bmrRes').html('<div class="alert alert-success mt-5"><p>You BMR is: <b>'+bmr+' </b></p></div>');
+    $('#bmrSed').text(1.2*bmr.toFixed(2));
+    $('#bmrLA').text((1.375*bmr).toFixed(2));
+    $('#bmrM').text((1.55*bmr).toFixed(2));
+    $('#bmrVA').text((1.725*bmr).toFixed(2));
+    $('#bmrSA').text(1.9*bmr.toFixed(2));
+})
+//Body Ideal Weight Calculator
+$('#calculateIdealWeight').click(function(e){
+    e.preventDefault();
+    let gender = $('input[name="igender"]:checked').val();
+    let age = $('#iAge').val();
+    let height = $('#iHeight').val();
+    let rRobinson,rMiller,rHamwi,rDevine='';
+    if(gender == 'male'){
+    rRobinson = 52 + 1.9*(math.unit(height, 'cm').toNumber('in')-60) ;
+    rMiller = 56.2 + 1.41 *(math.unit(height, 'cm').toNumber('in')-60);
+    rHamwi = 48.0 + 2.7 *(math.unit(height, 'cm').toNumber('in')-60);
+    rDevine = 50 + 2.3 *(math.unit(height, 'cm').toNumber('in')-60);
+    }else{
+         rRobinson = 49 + 1.7*(math.unit(height, 'cm').toNumber('in')-60) ;
+    rMiller = 53.1 + 1.36 *(math.unit(height, 'cm').toNumber('in')-60);
+    rHamwi = 45.5 + 2.2 *(math.unit(height, 'cm').toNumber('in')-60);
+    rDevine = 45.5 + 2.3 *(math.unit(height, 'cm').toNumber('in')-60);
+    }
+    $('#rRobinson').html('<p class="text-success">'+rRobinson.toFixed(2)+' kgs<p>');
+    $('#rMiller').html('<p class="text-success">'+rMiller.toFixed(2)+' kgs<p>');
+    $('#rHamwi').html('<p class="text-success">'+rHamwi.toFixed(2)+' kgs<p>');
+    $('#rDevine').html('<p class="text-success">'+rDevine.toFixed(2)+' kgs<p>');
+    
+});
+
+//Body FAt Calculator
+$('#calculateBodyFat').click(function(e){
+    e.preventDefault();
+    let gender = $('input[name="fgender"]:checked').val();
+    let age = $('#fAge').val();
+    let weight = $('#fWeight').val();
+    let height = $('#fHeight').val();
+    let neck = $('#fNeck').val();
+    let waist = $('#fWaist').val();
+    let hip = $('#fHip').val();
+    let bfp = '';
+    if(gender=='male'){
+        bfp = 495/(1.0324 - 0.19077*Math.log10(waist-neck) + 0.15456*Math.log10(height)) - 450;
+    }else{
+        bfp = 163.205 * Math.log10(math.unit(waist, 'cm').toNumber('in') + math.unit(hip, 'cm').toNumber('in') - math.unit(neck, 'cm').toNumber('in')) - 97.684 * Math.log10(math.unit(height, 'cm').toNumber('in')) - 78.387;
+        
+    }
+
+    $('#bodyFatRes').html('<div class="alert alert-success mt-5"><p>You body Fat Percentage is is: <b>'+bfp+' %</b></p></div>');
+})
+
+
+
+// Claculting Body Shape
+$('#calculateBodyShape').click(function(e){
+    e.preventDefault();
+    let bust = $('#bust').val();
+    let waist = $('#waist').val();
+    let highHip = $('#highHip').val();
+    let hip = $('#hip').val();
+    let result = '';
+    if((bust - hip) <= 1 && (hip - bust) < 3.6 && (bust - waist) >= 9 || (hip - waist) >= 10){
+        result = 'Hourglass';
+    }else if((hip - bust) >= 3.6 && (hip - bust) < 10 && (hip - waist) >= 9 && (highHip/waist) < 1.193){
+        result = 'Bottom Hourglass';
+    }else if((bust - hip) > 1 && (bust - hip) < 10 && (bust - waist) >= 9){
+        result = 'Top Hourglass';
+    }else if((hip - bust) > 2 && (hip - waist) >= 7 && (highHip/waist) >= 1.193){
+        result = 'Spoon';
+    }else if((hip - bust) >= 3.6 && (hip - waist) < 9){
+        result = 'Triangle';
+    }else if((bust - hip) >= 3.6 && (bust - waist) < 9){
+        result = 'Inverted Triangle'
+    }else if((hip - bust) < 3.6 && (bust - hip) < 3.6 && (bust - waist) < 9 && (hip - waist) < 10){
+        result = 'Rectangle';
+    }
+    $('#bodyShapRes').html('<div class="alert alert-primary mt-5"><p>You body shap is: <b>'+result+'</b></p></div>');
+})   </script>
+</html>

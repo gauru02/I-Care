@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Care</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+    <div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <img src="medical logo.png" width="80px">
+        </div>
+        <nav>
+            <ul id="menuitem">
+                <li> <a href="login.html">Login</a></li>
+                <!--<div class="dropdown">
+					<button class="dropbtn"></button>
+					<div class="dropdown-content">
+					  <a href="product.html"></a>
+					 
+					</div>
+				  </div>-->
+                <li> <a href="about.html">about </a></li>
+                <li> <a href="contact.html">contact </a></li>
+               
+
+            </ul>
+        </nav>
+        <img src="menu.png" class="menu-icon" onclick="menutoggle()">
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h1> Make Your Daily Medication More Simpler<br> </h1>
+            <p> Providing a perfect digital health care ecosystem to 
+                overcome their issues.  </p>
+                <p>Aims to build an environment where 
+                various patients via their home can consult doctors, chat with doctors, tell them their issues and discuss 
+                remedies.
+            </p>
+            <a href="login.html"class="btn">Explore Now &#8594;</a>
+        </div>
+        <div class="col-2">
+            <img src="medical1 logo.png" >
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    var menuitem = document.getElementById("menuitem");
+    menuitem.style.maxHeight="0px";
+    function menutoggle(){
+        if(menuitem.style.maxHeight=='0px')
+        {
+            menuitem.style.maxHeight='200px'
+        }
+        else{
+            menuitem.style.maxHeight="0px" ;
+        }
+    }
+    
+    
+</script>
+
+</body>
+</html>
+
+
+<!--<div class="customselect">
+					<div class="select">
+  					<select  name="utype" required>
+    					<option value="" selected disabled>Select Account Type</option>
+    					<option value="1" id="customer">Customer</option>
+    					<option value="2" id="seller">Seller</option>
+  					</select>
+					</div>
+				</div>-->
